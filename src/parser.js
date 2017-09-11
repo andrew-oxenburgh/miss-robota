@@ -3,7 +3,7 @@ var readline = require('readline');
 var { TableTop } = require('./robota');
 var argv = require('minimist')(process.argv.slice(2), { alias: { filename: '-f' } });
 
-var table = new TableTop();
+var table = new TableTop(argv.width, argv.height);
 
 var rl = readline.createInterface({
     input: fs.createReadStream(argv.filename),

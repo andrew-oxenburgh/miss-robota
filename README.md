@@ -4,15 +4,28 @@ a very simple robot moving around in 2d space
 ## Usage:
 
 ```
+git clone https://github.com/andrew-oxenburgh/miss-robota.git
+cd miss-robota
 npm install && npm run qa
 node src/parser.js --filename FILENAME
+node src/parser.js --filename FILENAME --width 100 --height 100
+npm run test-a
+npm run test-b
+npm run test-c
 ```
+
+You can optionally set width and height of the tabletop using the --width --height flags. Defaults to 5. (no unit tests for this)
+
+Also, I added running the test scripts into ```package.json```
 
 ## Assumptions
 
 1. Can have multiple PLACE statements
 1. Will accept command in lower case, and needing trimming
-1. JSCS - airbnb preferences,  
+1. JSCS - airbnb preferences, with different spacing. Just chose one.
+1. I've got mocha tests for the core functionality. The wrapper stuff in parser.js is not unit tested.
+1. Will ignore invalid commands
+1. I've used switch statements a lot, where I might have been able to use an array, but this works.
 
 ### Specification
 
