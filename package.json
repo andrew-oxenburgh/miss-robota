@@ -1,0 +1,19 @@
+{
+  "name": "miss-robota",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mocha": "^3.5.2"
+  },
+  "devDependencies": {
+    "jscs": "^3.0.7"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "jscs": "jscs test src --fix",
+    "qa": "npm run jscs && npm test"
+  },
+  "author": "",
+  "license": "ISC"
+}
