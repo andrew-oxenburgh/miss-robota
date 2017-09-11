@@ -110,7 +110,7 @@ exports.TableTop = class TableTop{
                 facing = 'NORTH';
                 break;
         }
-        return this.north + ', ' + this.east + ', ' + facing;
+        return this.east + ', ' + this.north + ', ' + facing;
     }
 
     _normaliseNorth() {

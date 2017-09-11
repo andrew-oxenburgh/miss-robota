@@ -1,13 +1,18 @@
 # miss-robota
 a very simple robot moving around in 2d space
 
+## Usage:
+
+```
+npm install && npm run qa
+node src/parser.js --filename FILENAME
+```
+
 ## Assumptions
 
 1. Can have multiple PLACE statements
 1. Will accept command in lower case, and needing trimming
 1. JSCS - airbnb preferences,  
-
-
 
 ### Specification
 

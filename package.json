@@ -1,20 +1,23 @@
 {
   "name": "miss-robota",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "accepts a file of commands, and walks through them",
   "dependencies": {
-    "minimist": "^1.2.0",
-    "mocha": "^3.5.2"
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "jscs": "^3.0.7"
+    "jscs": "^3.0.7",
+    "mocha": "^3.5.2"
   },
   "scripts": {
     "test": "mocha test",
     "jscs": "jscs test src --fix",
-    "qa": "npm run jscs && npm test"
+    "qa": "npm run jscs && npm test",
+    "test-a": "node src/parser.js --filename ./data/data-a.txt",
+    "test-b": "node src/parser.js --filename ./data/data-b.txt",
+    "test-c": "node src/parser.js --filename ./data/data-c.txt"
   },
-  "author": "",
+  "author": "Andrew Oxenburgh",
+  "email": "andrew.oxenburgh@gmail.com",
   "license": "ISC"
 }

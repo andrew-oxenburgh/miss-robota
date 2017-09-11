@@ -83,7 +83,7 @@ describe('TableTop', function () {
                 r.place(4, 0, 'S');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '0, 4, SOUTH');
+                assert.equal(pos, '4, 0, SOUTH');
             });
 
             it('north', function () {
@@ -99,7 +99,7 @@ describe('TableTop', function () {
                 r.place(0, 4, 'W');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '4, 0, WEST');
+                assert.equal(pos, '0, 4, WEST');
             });
         });
 
@@ -109,7 +109,7 @@ describe('TableTop', function () {
                 r.place(1, 1, 'E');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '1, 2, EAST');
+                assert.equal(pos, '2, 1, EAST');
             });
 
             it('north', function () {
@@ -117,7 +117,7 @@ describe('TableTop', function () {
                 r.place(1, 1, 'N');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '2, 1, NORTH');
+                assert.equal(pos, '1, 2, NORTH');
             });
 
             it('south', function () {
@@ -125,7 +125,7 @@ describe('TableTop', function () {
                 r.place(1, 1, 'S');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '0, 1, SOUTH');
+                assert.equal(pos, '1, 0, SOUTH');
             });
 
             it('west', function () {
@@ -133,7 +133,7 @@ describe('TableTop', function () {
                 r.place(1, 1, 'W');
                 r.move();
                 pos = r.report();
-                assert.equal(pos, '1, 0, WEST');
+                assert.equal(pos, '0, 1, WEST');
             });
         });
 
@@ -184,97 +184,39 @@ describe('TableTop', function () {
                 r = new TableTop();
                 r.place(7, -1, 'T');
                 pos = r.report();
-                assert.equal(pos, '0, 4, NORTH');
+                assert.equal(pos, '4, 0, NORTH');
             });
         });
+
+        let check = function (r, cmd, pos) {
+            r.command(cmd);
+            assert.equal(r.report(), pos);
+        };
 
         describe('program - written statements', function () {
-            it('1', function () {
-                r = new TableTop();
-                r.command('PLACE 2,1,NORTH');
-                assert.equal(r.report(), '1, 2, NORTH');
-                r.command('move');
-                assert.equal(r.report(), '2, 2, NORTH');
-                r.command(' MOVE');
-                assert.equal(r.report(), '3, 2, NORTH');
-                r.command('MOVE ');
-                assert.equal(r.report(), '4, 2, NORTH');
-                r.command('MOVE');
-                assert.equal(r.report(), '4, 2, NORTH');
-                r.command('RIGHT');
-                assert.equal(r.report(), '4, 2, EAST');
-                r.command('RIGHT');
-                assert.equal(r.report(), '4, 2, SOUTH');
-                r.command('RIGHT');
-                assert.equal(r.report(), '4, 2, WEST');
-                r.command('RIGHT');
-                assert.equal(r.report(), '4, 2, NORTH');
-                r.command('LEFT');
-                assert.equal(r.report(), '4, 2, WEST');
-                r.command('LEFT');
-                assert.equal(r.report(), '4, 2, SOUTH');
-                r.command('LEFT');
-                assert.equal(r.report(), '4, 2, EAST');
-                r.command('LEFT');
-                assert.equal(r.report(), '4, 2, NORTH');
-                r.command('report');
+                it('1', function () {
+                    r = new TableTop();
+                    check(r, 'PLACE 2,1,NORTH', '2, 1, NORTH');
+                    check(r, 'MOVE', '2, 2, NORTH');
+                    check(r, 'MOVE', '2, 3, NORTH');
+                    check(r, 'MOVE', '2, 4, NORTH');
+                    check(r, 'MOVE', '2, 4, NORTH');
+                    check(r, 'MOVE', '2, 4, NORTH');
+                    check(r, 'MOVE', '2, 4, NORTH');
+                    check(r, 'right', '2, 4, EAST');
+                    check(r, 'RIGHT', '2, 4, SOUTH');
+                    check(r, ' RIGHT ', '2, 4, WEST');
+                    check(r, 'RIGHT ', '2, 4, NORTH');
+                    check(r, 'LEFT ', '2, 4, WEST');
+                    check(r, 'LEFT ', '2, 4, SOUTH');
+                    check(r, 'MOVE', '2, 3, SOUTH');
+                    check(r, 'MOVE', '2, 2, SOUTH');
+                    check(r, 'MOVE', '2, 1, SOUTH');
+                    check(r, 'MOVE', '2, 0, SOUTH');
+                    check(r, 'MOVE', '2, 0, SOUTH');
+                    check(r, 'MOVE', '2, 0, SOUTH');
+                    check(r, 'MOVE', '2, 0, SOUTH');
+                    check(r, 'REPORT', '2, 0, SOUTH');
+                });
             });
-        });
-
-        describe('program - multiple statements', function () {
-            it('1', function () {
-                r = new TableTop();
-                r.place(2, 1, 'W');
-                assert.equal(r.report(), '1, 2, WEST');
-                r.move();
-                assert.equal(r.report(), '1, 1, WEST');
-                r.move();
-                assert.equal(r.report(), '1, 0, WEST');
-                r.move();
-                assert.equal(r.report(), '1, 0, WEST');
-                r.move();
-                assert.equal(r.report(), '1, 0, WEST');
-                r.move();
-                assert.equal(r.report(), '1, 0, WEST');
-                r.left();
-                assert.equal(r.report(), '1, 0, SOUTH');
-                r.left();
-                assert.equal(r.report(), '1, 0, EAST');
-                r.left();
-                assert.equal(r.report(), '1, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '2, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '3, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '4, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '4, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '4, 0, NORTH');
-                r.move();
-                assert.equal(r.report(), '4, 0, NORTH');
-                r.right();
-                assert.equal(r.report(), '4, 0, EAST');
-                r.move();
-                assert.equal(r.report(), '4, 1, EAST');
-                r.move();
-                assert.equal(r.report(), '4, 2, EAST');
-                r.move();
-                assert.equal(r.report(), '4, 3, EAST');
-                r.move();
-                assert.equal(r.report(), '4, 4, EAST');
-                r.move();
-                assert.equal(r.report(), '4, 4, EAST');
-                r.right();
-                assert.equal(r.report(), '4, 4, SOUTH');
-                r.right();
-                assert.equal(r.report(), '4, 4, WEST');
-                r.right();
-                assert.equal(r.report(), '4, 4, NORTH');
-                r.right();
-                assert.equal(r.report(), '4, 4, EAST');
-            });
-        });
-
     });
