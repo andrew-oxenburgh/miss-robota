@@ -26,6 +26,8 @@ Also, I added running the test scripts into ```package.json```
 1. I've got mocha tests for the core functionality. The wrapper stuff in parser.js is not unit tested.
 1. Will ignore invalid commands
 1. I've used switch statements a lot, where I might have been able to use an array, but this works.
+1. I used '_' prefixes to indicate private functions. I know this isn't standard, but just by convention.
+
 
 ### Specification
 
