@@ -14,6 +14,7 @@ exports.TableTop = class {
         if (cmd.indexOf('PLACE') === 0) {
             var params = cmd.substring('PLACE '.length).split(',');
             this.place(parseInt(params[0]), parseInt(params[1]), params[2]);
+            return;
         }
 
         switch (cmd) {
@@ -58,7 +59,6 @@ exports.TableTop = class {
         }
         this._normaliseNorth();
         this._normaliseEast();
-
     }
 
     left() {
@@ -96,7 +96,22 @@ exports.TableTop = class {
     }
 
     report() {
-        return this.north + ', ' + this.east + ', ' + this.facing;
+        var facing = '';
+        switch (this.facing){
+            case 'E':
+                facing = 'EAST';
+                break;
+            case 'S':
+                facing = 'SOUTH';
+                break;
+            case 'W':
+                facing = 'WEST';
+                break;
+            case 'N':
+                facing = 'NORTH';
+                break;
+        }
+        return this.north + ', ' + this.east + ', ' + facing;
     }
 
     _normaliseNorth() {
