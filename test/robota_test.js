@@ -80,7 +80,7 @@ describe('TableTop', function () {
 
             it('south', function () {
                 r = new TableTop();
-                r.place(0, 4, 'S');
+                r.place(4, 0, 'S');
                 r.move();
                 pos = r.report();
                 assert.equal(pos, '0, 4, SOUTH');
@@ -96,7 +96,7 @@ describe('TableTop', function () {
 
             it('west', function () {
                 r = new TableTop();
-                r.place(4, 0, 'W');
+                r.place(0, 4, 'W');
                 r.move();
                 pos = r.report();
                 assert.equal(pos, '4, 0, WEST');
@@ -182,7 +182,7 @@ describe('TableTop', function () {
 
             it('out of range bit of both', function () {
                 r = new TableTop();
-                r.place(-1, 7, 'T');
+                r.place(7, -1, 'T');
                 pos = r.report();
                 assert.equal(pos, '0, 4, NORTH');
             });
@@ -191,7 +191,7 @@ describe('TableTop', function () {
         describe('program - written statements', function () {
             it('1', function () {
                 r = new TableTop();
-                r.command('PLACE 1,2,NORTH');
+                r.command('PLACE 2,1,NORTH');
                 assert.equal(r.report(), '1, 2, NORTH');
                 r.command('move');
                 assert.equal(r.report(), '2, 2, NORTH');
@@ -224,7 +224,7 @@ describe('TableTop', function () {
         describe('program - multiple statements', function () {
             it('1', function () {
                 r = new TableTop();
-                r.place(1, 2, 'W');
+                r.place(2, 1, 'W');
                 assert.equal(r.report(), '1, 2, WEST');
                 r.move();
                 assert.equal(r.report(), '1, 1, WEST');

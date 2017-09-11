@@ -1,5 +1,4 @@
-
-exports.TableTop = class {
+exports.TableTop = class TableTop{
 
     constructor(w, h) {
         this.width = w || 5;
@@ -28,12 +27,12 @@ exports.TableTop = class {
                 this.right();
                 break;
             case 'REPORT':
-                console.log(this.report());
+                console.log(this.report().replace(/ /g, ''));
                 break;
         }
     }
 
-    place(n, e, f) {
+    place(e, n, f) {
         this.north = n;
         this.east = e;
         this.facing = f;
