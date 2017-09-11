@@ -27,7 +27,7 @@ Also, I added running the test scripts into ```package.json```
 1. Will ignore invalid commands
 1. I've used switch statements a lot, where I might have been able to use an array, but this works.
 1. I used '_' prefixes to indicate private functions. I know this isn't standard, but just by convention.
-
+1. Ignores all statements before a PLACE statement.
 
 ### Specification
 

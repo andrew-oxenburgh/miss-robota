@@ -6,6 +6,7 @@ exports.TableTop = class TableTop{
         this.north = 0;
         this.east = 0;
         this.facing = 'N';
+        this.running = false;
     }
 
     command(cmd) {
@@ -13,6 +14,11 @@ exports.TableTop = class TableTop{
         if (cmd.indexOf('PLACE') === 0) {
             var params = cmd.substring('PLACE '.length).split(',');
             this.place(parseInt(params[0]), parseInt(params[1]), params[2]);
+            this.running = true;
+            return;
+        }
+
+        if (!this.running) {
             return;
         }
 

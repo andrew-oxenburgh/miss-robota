@@ -194,7 +194,7 @@ describe('TableTop', function () {
         };
 
         describe('program - written statements', function () {
-                it('1', function () {
+                it('lots of statements', function () {
                     r = new TableTop();
                     check(r, 'PLACE 2,1,NORTH', '2, 1, NORTH');
                     check(r, 'MOVE', '2, 2, NORTH');
@@ -217,6 +217,17 @@ describe('TableTop', function () {
                     check(r, 'MOVE', '2, 0, SOUTH');
                     check(r, 'MOVE', '2, 0, SOUTH');
                     check(r, 'REPORT', '2, 0, SOUTH');
+                });
+
+                it('ignore leading statements', function () {
+                    r = new TableTop();
+                    check(r, 'MOVE', '0, 0, NORTH');
+                    check(r, 'RIGHT', '0, 0, NORTH');
+                    check(r, 'LEFT', '0, 0, NORTH');
+                    check(r, 'REPORT', '0, 0, NORTH');
+                    check(r, 'PLACE 2,1,NORTH', '2, 1, NORTH');
+                    check(r, 'MOVE', '2, 2, NORTH');
+                    check(r, 'MOVE', '2, 3, NORTH');
                 });
             });
     });
