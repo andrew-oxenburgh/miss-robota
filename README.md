@@ -12,9 +12,13 @@ node src/parser.js --filename FILENAME --width 100 --height 100
 npm run test-a
 npm run test-b
 npm run test-c
+
+cat data/data-c.txt | node src/parser.js --width 3 --height 3
 ```
 
 You can optionally set width and height of the tabletop using the --width --height flags. Defaults to 5. (no unit tests for this)
+
+Absence of --filename parameter will read from stdin
 
 Also, I added running the test scripts into ```package.json```
 
