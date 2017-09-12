@@ -4,6 +4,15 @@ a very simple robot moving around in 2d space
 ## Usage:
 
 ```
+Usage: node src/parser.js [switches]
+  --filename FILENAME
+  --width WIDTH
+  --height HEIGHT
+  --interactive             if interactive and filenames both switched, will be interactive
+```
+
+
+```
 git clone https://github.com/andrew-oxenburgh/miss-robota.git
 cd miss-robota
 npm install && npm run qa

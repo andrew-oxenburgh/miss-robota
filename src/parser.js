@@ -1,7 +1,6 @@
 var fs = require('fs');
 var readline = require('readline');
 var { TableTop } = require('./robota');
-var repl = require('repl');
 
 var argv = require('minimist')(process.argv.slice(2), {
     alias: {
@@ -11,6 +10,7 @@ var argv = require('minimist')(process.argv.slice(2), {
 var table = new TableTop(argv.width, argv.height);
 
 if (argv.interactive) {
+    var repl = require('repl');
     function initializeContext(context) {
         context.table = table;
     }
