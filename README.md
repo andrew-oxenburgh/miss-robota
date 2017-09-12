@@ -14,6 +14,7 @@ npm run test-b
 npm run test-c
 
 cat data/data-c.txt | node src/parser.js --width 3 --height 3
+node src/parser.js --interactive
 ```
 
 You can optionally set width and height of the tabletop using the --width --height flags. Defaults to 5. (no unit tests for this)
