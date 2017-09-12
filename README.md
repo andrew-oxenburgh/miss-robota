@@ -34,7 +34,7 @@ Also, I added running the test scripts into ```package.json```
 1. I used '_' prefixes to indicate private functions. I know this isn't standard, but just by convention.
 1. Ignores all statements before a PLACE statement.
 
-### Specification
+# Specification
 
 The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
 
