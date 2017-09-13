@@ -106,10 +106,6 @@ exports.TableTop = class TableTop{
         }
     }
 
-    _isNumeric(n) {
-        return !isNaN(parseFloat(n)) && isFinite(n);
-    }
-
     _normaliseEast() {
         if (!this._isNumeric(this.east)) {
             this.east = 0;
@@ -135,6 +131,10 @@ exports.TableTop = class TableTop{
         if ('NSEW'.indexOf(this.facing) < 0) {
             this.facing = 'N';
         }
+    }
+
+    _isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
     }
 };
 
