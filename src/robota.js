@@ -13,7 +13,11 @@ exports.TableTop = class TableTop{
         cmd = cmd.trim().toUpperCase();
         if (cmd.indexOf('PLACE') === 0) {
             var params = cmd.substring('PLACE '.length).split(',');
-            this.place(parseInt(params[0]), parseInt(params[1]), params[2]);
+            if (!params || params.length < 3) {
+                return;
+            }
+
+            this.place(parseInt(params[0].trim()), parseInt(params[1].trim()), params[2].trim());
             this.running = true;
             return;
         }
@@ -36,6 +40,7 @@ exports.TableTop = class TableTop{
                 console.log(this.report().replace(/ /g, ''));
                 break;
         }
+        return;
     }
 
     place(e, n, f) {
@@ -107,6 +112,11 @@ exports.TableTop = class TableTop{
     }
 
     _normaliseFacing() {
+        if (!this.facing) {
+            this.facing = 'N';
+            return;
+        }
+
         this.facing = this.facing.substring(0, 1);
         if ('NSEW'.indexOf(this.facing) < 0) {
             this.facing = 'N';
