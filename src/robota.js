@@ -67,56 +67,23 @@ exports.TableTop = class TableTop{
     }
 
     left() {
-        switch (this.facing) {
-            case 'N':
-                this.facing = 'W';
-                break;
-            case 'E':
-                this.facing = 'N';
-                break;
-            case 'S':
-                this.facing = 'E';
-                break;
-            case 'W':
-                this.facing = 'S';
-                break;
-        }
+        let directions = 'NWSE';
+        this.facing = directions[(directions.indexOf(this.facing) + 1) % directions.length];
     }
 
     right() {
-        switch (this.facing) {
-            case 'N':
-                this.facing = 'E';
-                break;
-            case 'E':
-                this.facing = 'S';
-                break;
-            case 'S':
-                this.facing = 'W';
-                break;
-            case 'W':
-                this.facing = 'N';
-                break;
-        }
+        let directions = 'ESWN';
+        this.facing = directions[(directions.indexOf(this.facing) + 1) % directions.length];
     }
 
     report() {
-        var facing = '';
-        switch (this.facing){
-            case 'E':
-                facing = 'EAST';
-                break;
-            case 'S':
-                facing = 'SOUTH';
-                break;
-            case 'W':
-                facing = 'WEST';
-                break;
-            case 'N':
-                facing = 'NORTH';
-                break;
-        }
-        return this.east + ', ' + this.north + ', ' + facing;
+        let directions = {
+            N: 'NORTH',
+            S: 'SOUTH',
+            E: 'EAST',
+            W: 'WEST',
+        };
+        return this.east + ', ' + this.north + ', ' + directions[this.facing];
     }
 
     _normaliseNorth() {
