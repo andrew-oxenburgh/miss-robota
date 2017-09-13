@@ -92,6 +92,11 @@ exports.TableTop = class TableTop{
     }
 
     _normaliseNorth() {
+        if (!this._isNumeric(this.north)) {
+            this.north = 0;
+            return;
+        }
+
         if (this.north >= this.height) {
             this.north = this.height - 1;
         }
@@ -101,7 +106,16 @@ exports.TableTop = class TableTop{
         }
     }
 
+    _isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
     _normaliseEast() {
+        if (!this._isNumeric(this.east)) {
+            this.east = 0;
+            return;
+        }
+
         if (this.east >= this.width) {
             this.east = this.width - 1;
         }

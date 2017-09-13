@@ -209,6 +209,11 @@ describe('TableTop', function () {
                 r = new TableTop();
                 check(r, 'PLACE', '0, 0, NORTH');
             });
+
+            it('non int placement ', function () {
+                r = new TableTop();
+                check(r, 'PLACE w,w,NORTH', '0, 0, NORTH');
+            });
         });
 
         it('lots of statements', function () {
