@@ -32,6 +32,10 @@ Absence of --filename parameter will read from stdin
 
 Also, I added running the test scripts into ```package.json```
 
+## Continuous Integration
+
+https://travis-ci.org/andrew-oxenburgh/miss-robota
+
 ## Assumptions
 
 1. Can have multiple PLACE statements
