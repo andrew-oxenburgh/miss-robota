@@ -1,6 +1,8 @@
 # miss-robota
 a very simple robot moving around in 2d space
 
+[![Known Vulnerabilities](https://snyk.io/test/github/andrew-oxenburgh/miss-robota/badge.svg)](https://snyk.io/test/github/andrew-oxenburgh/miss-robota)
+
 ## Usage:
 
 ```
